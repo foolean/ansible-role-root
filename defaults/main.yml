@@ -1,0 +1,11 @@
+# Copyright (c) 2023, Bennett Samowich <bennett@foolean.org>
+# All rights reserved
+# SPDX short identifier: BSD-3-Clause
+---
+
+# root_password
+#   The encrypted password for the root user.  This is required by
+#   CIS "Require Authentication for Single-User Mode". This parameter
+#   should be encrypted using sha-512-crypt (openssl passwd -6)
+#   (default: null)
+root_password: null
