@@ -9,6 +9,20 @@
 - name: Role foolean/root
   block:
 
+  - name: CIS | Ensure inactive password lock is 30 days or less (check)
+    become: true
+    ansible.builtin.shell:
+      cmd: "passwd -S root | awk '{print $7}'"
+    check_mode: false
+    changed_when: password_inactive.stdout != '30'
+    register: password_inactive
+
+  - name: CIS | Ensure inactive password lock is 30 days or less (set)
+    become: true
+    ansible.builtin.command:
+      cmd: "chage --inactive '{{ root_password_inactive }}' root"
+    when: password_inactive is changed
+
   - name: CIS | Configure the root user account
     become: true
     ansible.builtin.user:
@@ -16,11 +30,11 @@
       shell: '/bin/bash'
       uid: 0
       group: 'root'
-      expires: 0
+      expires: -1
       home: '/root'
       password: "{{ root_password }}"
-      password_expire_max: 99999
-      password_expire_min: 0
+      password_expire_max: "{{ root_password_maxdays }}"
+      password_expire_min: "{{ root_password_mindays }}"
 
   # Tags to be applied to this role (block)
   tags:

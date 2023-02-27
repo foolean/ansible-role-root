@@ -9,3 +9,19 @@
 #   should be encrypted using sha-512-crypt (openssl passwd -6)
 #   (default: null)
 root_password: null
+
+# root_password_maxdays
+#   Maximum age in days for root's password
+#   (default: 365) Ref: CIS
+root_password_maxdays: 365
+
+# root_password_mindays
+#   Minimum age in days for root's password
+#   (default: 7) Ref: CIS
+root_password_mindays: 7
+
+# root_password_inactive
+#   Number of days after a password has expired
+#   before locking the account
+#   (default: 30) Ref: CIS
+root_password_inactive: 30
