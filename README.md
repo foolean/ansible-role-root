@@ -1,6 +1,6 @@
-# ansible-role-bash
+# ansible-role-root
 
-Ansible role to manage bash
+Ansible role to manage root
 
 
 ## Requirements
@@ -29,8 +29,15 @@ Ansible role to manage bash
     ```
 
 
+## Supported operating systems
+
+    * Debian (11)
+    * RedHat (8)
+
+
 ## Compliance
 
+    * CIS Debian Linux 11 Benchmark v1.0.0
     * CIS RedHat Enterprise Linux 8 Benchmark v2.0.0
 
 
